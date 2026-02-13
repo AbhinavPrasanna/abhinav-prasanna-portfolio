@@ -1,0 +1,56 @@
+:root {
+  --bg: #0c0d0f;
+  --bg-elevated: #14161a;
+  --bg-card: #1a1c21;
+  --text: #e8eaed;
+  --text-muted: #9aa0a6;
+  --accent: #00c9a7;
+  --accent-dim: rgba(0, 201, 167, 0.15);
+  --accent-hover: #00e0b8;
+  --border: #2d3139;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --font-head: 'Outfit', system-ui, sans-serif;
+  --font-body: 'Source Sans 3', system-ui, sans-serif;
+  --transition: 0.2s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  line-height: 1.2;
+}

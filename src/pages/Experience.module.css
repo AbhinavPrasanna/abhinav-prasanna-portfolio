@@ -1,0 +1,82 @@
+.page {
+  max-width: 42rem;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.back:hover {
+  color: var(--accent);
+}
+
+.title {
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+}
+
+.intro {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0 0 2rem;
+  color: var(--text-muted);
+}
+
+.linkedin {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.linkedin:hover {
+  text-decoration: underline;
+}
+
+.positions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.position {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.position:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.positionRole {
+  display: block;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.positionCompany {
+  display: block;
+  color: var(--accent);
+  font-weight: 500;
+  margin-top: 0.15rem;
+}
+
+.positionMeta {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+
+.positionDesc {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin: 0.6rem 0 0;
+  color: var(--text-muted);
+}

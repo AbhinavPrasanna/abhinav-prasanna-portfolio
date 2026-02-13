@@ -1,0 +1,223 @@
+.backgroundWrapper {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-top: -2rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.backgroundOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.6) 100%);
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .backgroundWrapper {
+    margin-top: -3rem;
+  }
+}
+
+.backgroundWrapper .page {
+  position: relative;
+  z-index: 1;
+}
+
+.page {
+  max-width: 42rem;
+  padding-bottom: 3rem;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.back:hover {
+  color: var(--accent);
+}
+
+.title {
+  font-size: 2rem;
+  margin: 0 0 0.25rem;
+}
+
+.tagline {
+  color: var(--accent);
+  font-weight: 500;
+  margin: 0 0 1.5rem;
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  margin-bottom: 1.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.videoWrapperBottom {
+  margin-top: 2rem;
+}
+
+.body {
+  line-height: 1.75;
+}
+
+.body p {
+  margin: 0 0 1rem;
+}
+
+.tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+
+.tech li {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.65rem;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.link {
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+.nav {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.nav a {
+  font-size: 0.95rem;
+}
+
+.embedCard {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.embedCardTitle {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.embedCardDesc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.embedCardDesc a {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.embedCardDesc a:hover {
+  text-decoration: underline;
+}
+
+.embedWrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.embedIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Match GitHub Pages 3js canvas size (570×570) so the demo doesn’t look smaller. */
+.demoWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  min-height: 570px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.demoCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 300px;
+  min-height: 300px;
+}
+
+.demoCanvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.demoIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.bottomImage {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}

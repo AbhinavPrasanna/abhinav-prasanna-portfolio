@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minecraft 3js Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #1a1a1a; }
+    #loadStatus { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); color: #888; font-family: system-ui,sans-serif; font-size: 14px; z-index: 0; pointer-events: none; }
+    #loadStatus.error { color: #e66; }
+    #MinecraftWorld {
+      width: 100%;
+      height: 100%;
+      min-width: 300px;
+      min-height: 300px;
+      position: relative;
+    }
+    #MinecraftWorld canvas { display: block; width: 100% !important; height: 100% !important; }
+  </style>
+</head>
+<body>
+  <div id="loadStatus">Loading 3js demo…</div>
+  <div id="MinecraftWorld"></div>
+  <script type="module" src="/3jsWorld/js/3js.js"></script>
+  <script>
+    window.addEventListener('error', function(e) {
+      var el = document.getElementById('loadStatus');
+      if (el) { el.textContent = 'Error: ' + (e.message || 'failed to load'); el.classList.add('error'); }
+    });
+  </script>
+</body>
+</html>

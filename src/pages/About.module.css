@@ -1,0 +1,55 @@
+.page {
+  max-width: 42rem;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 0 0 1.5rem;
+}
+
+.content {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.content p {
+  margin: 0 0 1rem;
+}
+
+.content p:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+.linkedin {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: var(--accent-dim);
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+.linkedin:hover {
+  background: rgba(0, 201, 167, 0.25);
+}
+
+.experienceButton {
+  display: inline-block;
+  margin-left: 0.75rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--accent-dim);
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+.experienceButton:hover {
+  background: rgba(0, 201, 167, 0.25);
+}
+
+.profileImage {
+  display: block;
+  width: 100%;
+  max-width: 18rem;
+  margin-top: 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
