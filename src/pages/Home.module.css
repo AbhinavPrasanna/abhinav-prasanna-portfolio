@@ -79,7 +79,7 @@
   border-radius: var(--radius);
   font-weight: 600;
   font-size: 1rem;
-  transition: background var(--transition), color var(--transition), transform var(--transition);
+  transition: background var(--transition), color var(--transition), transform var(--transition), outline var(--transition), outline-offset var(--transition);
 }
 
 .primary {
@@ -90,6 +90,8 @@
 .primary:hover {
   background: var(--accent-hover);
   color: var(--bg);
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .secondary {
@@ -102,6 +104,8 @@
   border-color: var(--accent);
   background: var(--accent-dim);
   color: var(--accent);
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .primary:hover,

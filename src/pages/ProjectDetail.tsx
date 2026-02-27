@@ -80,6 +80,48 @@ export default function ProjectDetail() {
           ))}
         </ul>
       )}
+      {project.slug === 'vision-benefits' && (
+        <>
+          <div className={styles.embedCard}>
+            <h3 className={styles.embedCardTitle}>Kaiser Permanente vision benefits</h3>
+            <p className={styles.embedCardDesc}>
+              Learn more about Kaiser Permanente&apos;s vision benefits offering for employers.
+            </p>
+            <a
+              href="https://business.kaiserpermanente.org/plans-products/ancillary-benefits/vision"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.link}
+            >
+              Visit Kaiser Permanente vision benefits site →
+            </a>
+          </div>
+          <div className={styles.embedCard}>
+            <h3 className={styles.embedCardTitle}>Testing and quality</h3>
+            <p className={styles.embedCardDesc}>
+              Comprehensive unit and integration test suites in Node.js to harden APIs and improve regression coverage.
+            </p>
+          </div>
+          <div className={styles.embedCard}>
+            <h3 className={styles.embedCardTitle}>Observability and performance</h3>
+            <p className={styles.embedCardDesc}>
+              Splunk-based log analysis to optimize API execution times and troubleshoot critical production incidents.
+            </p>
+          </div>
+          <div className={styles.embedCard}>
+            <h3 className={styles.embedCardTitle}>Refactoring and maintainability</h3>
+            <p className={styles.embedCardDesc}>
+              Refactoring and optimization to isolate concerns and make debugging and ongoing maintenance faster.
+            </p>
+          </div>
+          <div className={styles.embedCard}>
+            <h3 className={styles.embedCardTitle}>Security impact</h3>
+            <p className={styles.embedCardDesc}>
+              Security-focused package and dependency upgrades reduced known vulnerabilities by approximately 30% across the platform.
+            </p>
+          </div>
+        </>
+      )}
       {project.links && project.links.length > 0 && (
         <div className={styles.links}>
           {project.links.map(({ label, url }) =>

@@ -28,6 +28,14 @@ export default function About() {
           alt="Abhinav Prasanna"
           className={styles.profileImage}
         />
+        <a
+          href="https://github.com/AbhinavPrasanna/abhinav-prasanna-portfolio"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.siteRepo}
+        >
+          Code for this website →
+        </a>
       </div>
     </div>
   );

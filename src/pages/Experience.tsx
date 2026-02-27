@@ -20,13 +20,13 @@ export default function Experience() {
         <li className={styles.position}>
           <span className={styles.positionRole}>Site Reliability Engineer</span>
           <span className={styles.positionCompany}>Centene Corporation</span>
-          <span className={styles.positionMeta}>Jan 2025 – Present · Remote</span>
+          <span className={styles.positionMeta}>Jan 2025 – Jan 2026 · Remote</span>
           <p className={styles.positionDesc}>Lead cross-LOB collaboration to troubleshoot enterprise applications. Debug Spring Boot microservices, optimize SQL in Oracle, fix Python automation scripts, and resolve document processing issues.</p>
         </li>
         <li className={styles.position}>
           <span className={styles.positionRole}>Full Stack Engineer</span>
           <span className={styles.positionCompany}>Cognizant</span>
-          <span className={styles.positionMeta}>Aug 2023 – Present · Pleasanton, CA</span>
+          <span className={styles.positionMeta}>Aug 2023 – Feb 2026 · Pleasanton, CA</span>
           <p className={styles.positionDesc}>Built Indie Movie Platform with React and ASP.NET; AWS Cognito, S3, Elastic Beanstalk, RDS, CloudFront, CodePipeline; unit and integration tests in React and C#.</p>
         </li>
         <li className={styles.position}>

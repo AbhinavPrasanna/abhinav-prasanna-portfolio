@@ -9,6 +9,9 @@ export default function Layout({ children }: LayoutProps) {
     <div className={styles.wrapper}>
       <Nav />
       <main className={styles.main}>{children}</main>
+      <footer className={styles.footer}>
+        Developed on Cursor using ReactJS framework and deployed on AWS
+      </footer>
     </div>
   );
 }

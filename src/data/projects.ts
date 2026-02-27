@@ -34,6 +34,14 @@ export const mainProjects: Project[] = [
     tech: ['Angular', 'Kendo UI', 'Jasmine', 'Karma'],
   },
   {
+    slug: 'vision-benefits',
+    title: 'Vision Benefits',
+    tagline: 'Kaiser Permanente Technology',
+    description: 'Kaiser Permanente vision benefits platform that helps employers offer integrated, high-quality eye care alongside medical coverage.',
+    longDescription: `Internal Kaiser Permanente web application for managing vision benefits across employer groups and business lines. The platform lets benefits and IT teams configure plan options, align vision coverage with medical plans, and keep eligibility and provider access in sync.\n\nOn this platform I served as a Site Reliability / Backend Engineer, designing and maintaining Node.js APIs and using AI-assisted development to accelerate delivery while backing changes with robust unit and integration test suites. I regularly led cross-team deployment calls and used Splunk to analyze logs, optimize API execution times, and troubleshoot critical production incidents. I also refactored and optimized code to isolate concerns, making debugging and ongoing maintenance significantly faster.`,
+    tech: ['NodeJS', 'Microservices', 'Unit Testing', 'Integration Testing'],
+  },
+  {
     slug: 'iware',
     title: 'iWare',
     tagline: 'Cognizant Digital Engineering',
