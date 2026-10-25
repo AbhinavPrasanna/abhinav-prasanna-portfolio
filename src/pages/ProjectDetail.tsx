@@ -153,8 +153,19 @@ export default function ProjectDetail() {
         </p>
       )}
       {project.sections?.map((section) => (
-        <section key={section.title} className={styles.caseStudySection}>
+        <section key={section.title} id={section.id} className={styles.caseStudySection}>
           <h2>{section.title}</h2>
+          {section.diagram && (
+            <figure className={styles.projectFigure}>
+              <a href={section.diagram.src} target="_blank" rel="noopener noreferrer" aria-label="Open full-size architecture diagram">
+                <img src={section.diagram.src} alt={section.diagram.alt} loading="lazy" className={styles.sectionImage} />
+              </a>
+              <figcaption>
+                {section.diagram.caption}{' '}
+                <a href={section.diagram.src} target="_blank" rel="noopener noreferrer">Open full-size diagram →</a>
+              </figcaption>
+            </figure>
+          )}
           <div className={styles.body}>
             {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>

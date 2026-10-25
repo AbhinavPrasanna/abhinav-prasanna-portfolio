@@ -8,9 +8,11 @@ export type Project = {
   tech?: string[];
   previewImage?: { src: string; alt: string; caption: string };
   sections?: {
+    id?: string;
     title: string;
     paragraphs: string[];
     image?: { src: string; alt: string; caption: string; portrait?: boolean };
+    diagram?: { src: string; alt: string; caption: string };
   }[];
   caseStudyUrl?: string;
   isSideProject?: boolean;
@@ -75,11 +77,19 @@ export const mainProjects: Project[] = [
         },
       },
       {
-        title: 'Independent ingestion, cached reads',
+        id: 'production-architecture',
+        title: 'Production architecture',
+        diagram: {
+          src: '/case-studies/bayline-sports/images/bayline-architecture.svg',
+          alt: 'Bayline Sports architecture: Route 53 DNS connects fans to Caddy HTTPS and Next.js on AWS Lightsail. An independent Node.js worker fetches sports and YouTube data into private PostgreSQL. Separate monitoring, backups and a CodeBuild-to-ECR release path support operations.',
+          caption: 'Production architecture for the October 2026 MVP: request flow, data ingestion, recovery and container releases.',
+        },
         paragraphs: [
-          'The browser reads snapshots from Next.js APIs backed by PostgreSQL. A separate Node.js worker fetches BALLDONTLIE data and YouTube metadata, so web restarts do not reset ingestion and browser refreshes do not consume provider quota. Sports and YouTube credentials remain worker-only.',
+          'Route 53 resolves baylinescore.com to the AWS Lightsail host, where Caddy terminates HTTPS and routes requests to Next.js. Docker Compose runs the web application, ingestion worker and PostgreSQL as separate services. The web application serves the React interface and read-only APIs from stored snapshots; the database has no public port.',
+          'A separate Node.js worker fetches schedules, scores, statistics and injury reports from BALLDONTLIE, and discovers official highlights through the YouTube API. It validates and normalizes responses before writing PostgreSQL snapshots. Sports and YouTube credentials remain worker-only, so browser traffic does not consume provider quota and web restarts do not reset the ingestion schedule.',
           'Visible, online browsers refresh cached snapshots every 15 seconds and refetch on reconnect or focus. Upstream sports checks target roughly one minute and injury checks roughly ten minutes, subject to provider limits, pagination and backoff. The release uses snapshot polling; it does not claim second-level score latency or an event stream.',
           'Zod validates provider payloads, and eight SQL migrations organize normalized games, records, media, statistics and player status. Composite league/provider identities prevent ID collisions. PostgreSQL advisory locking, persistent request throttling, transactional upserts and retries keep ingestion controlled. Failed or partial fetches preserve the last successful snapshot.',
+          'Operations run outside the application process. EventBridge schedules a Lambda readiness check, with CloudWatch and SNS reporting failure and recovery. Host jobs send verified backups to private off-server storage every six hours, with 35-day retention and isolated restore checks. For releases, an operator prepares GitHub source, CodeBuild validates and builds containers, ECR stores digest-pinned images, and Lightsail pulls them for deployment and verification. AWS budget alerts track actual and forecast spending without enforcing a spending cutoff.',
         ],
       },
       {
