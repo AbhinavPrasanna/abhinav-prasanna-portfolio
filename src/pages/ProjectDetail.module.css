@@ -89,6 +89,48 @@
   margin: 0 0 1rem;
 }
 
+.projectFigure {
+  margin: 1.5rem 0;
+}
+
+.projectFigure figcaption {
+  margin-top: 0.65rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.heroImage,
+.sectionImage,
+.portraitImage {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.heroImage {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top;
+}
+
+.portraitImage {
+  max-width: 20rem;
+  margin-inline: auto;
+}
+
+.caseStudySection {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.caseStudySection h2 {
+  font-size: 1.4rem;
+  margin: 0 0 1rem;
+}
+
 .tech {
   display: flex;
   flex-wrap: wrap;

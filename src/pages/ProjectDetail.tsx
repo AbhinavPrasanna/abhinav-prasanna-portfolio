@@ -57,6 +57,14 @@ export default function ProjectDetail() {
       </Link>
       <h1 className={styles.title}>{project.title}</h1>
       {project.tagline && <p className={styles.tagline}>{project.tagline}</p>}
+      {project.previewImage && (
+        <figure className={styles.projectFigure}>
+          <a href={project.previewImage.src} target="_blank" rel="noopener noreferrer" aria-label={`Open full screenshot: ${project.previewImage.alt}`}>
+            <img src={project.previewImage.src} alt={project.previewImage.alt} className={styles.heroImage} />
+          </a>
+          <figcaption>{project.previewImage.caption}</figcaption>
+        </figure>
+      )}
       {project.videoUrl && (
         <div className={styles.videoWrapper}>
           <iframe
@@ -137,6 +145,34 @@ export default function ProjectDetail() {
           )}
         </div>
       )}
+      {project.caseStudyUrl && (
+        <p>
+          <a href={project.caseStudyUrl} download className={styles.link}>
+            Download complete case study (ZIP) ↓
+          </a>
+        </p>
+      )}
+      {project.sections?.map((section) => (
+        <section key={section.title} className={styles.caseStudySection}>
+          <h2>{section.title}</h2>
+          <div className={styles.body}>
+            {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          </div>
+          {section.image && (
+            <figure className={styles.projectFigure}>
+              <a href={section.image.src} target="_blank" rel="noopener noreferrer" aria-label={`Open full screenshot: ${section.image.alt}`}>
+                <img
+                  src={section.image.src}
+                  alt={section.image.alt}
+                  loading="lazy"
+                  className={section.image.portrait ? styles.portraitImage : styles.sectionImage}
+                />
+              </a>
+              <figcaption>{section.image.caption}</figcaption>
+            </figure>
+          )}
+        </section>
+      ))}
       <nav className={styles.nav} aria-label="Related">
         <Link to="/about">About me</Link>
         <Link to={`/${basePath}`}>Back to {isSide ? 'Side Projects' : 'Projects'}</Link>

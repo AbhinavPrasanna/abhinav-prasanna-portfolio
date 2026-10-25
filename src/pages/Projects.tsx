@@ -7,7 +7,7 @@ export default function Projects() {
     <div className={styles.page}>
       <h1 className={styles.title}>Projects</h1>
       <p className={styles.intro}>
-        Work from internships, school, and collaborations.
+        Independent products, professional work, school projects and collaborations.
       </p>
       <ul className={styles.grid} aria-label="Project list">
         {mainProjects.filter((p) => p.slug !== 'minecraft-breakdown').map((project) => (
