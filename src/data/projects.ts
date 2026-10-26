@@ -41,9 +41,9 @@ export const mainProjects: Project[] = [
     longDescription: `I designed and shipped Bayline Sports to make following Bay Area teams easier across the NBA, NFL and WNBA. Fans can find the next game, browse a combined schedule and explore game details, with team preferences and spoiler protection saved on their device.\n\nI led product direction and full-stack delivery, from validating sports-data coverage to building the interface, independent ingestion worker, database and production recovery workflow. Developed October 20–23, 2026, in collaboration with OpenAI Codex.`,
     tech: ['Next.js', 'React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker', 'AWS Lightsail'],
     previewImage: {
-      src: '/case-studies/bayline-sports/images/hero-desktop.png',
-      alt: 'Bayline Sports desktop scoreboard with Warriors, 49ers and Valkyries next-game cards.',
-      caption: 'Desktop scoreboard during development. Screenshots in this case study were captured October 21–23, 2026.',
+      src: '/case-studies/bayline-sports/images/hero-desktop-2026-10-26.png',
+      alt: 'Bayline Sports live homepage with player artwork, team records, upcoming games and the scoreboard.',
+      caption: 'Live homepage captured October 26, 2026. Feature screenshots below are development captures from October 21–23, 2026.',
     },
     links: [
       { label: 'Live application', url: 'https://baylinescore.com/' },
