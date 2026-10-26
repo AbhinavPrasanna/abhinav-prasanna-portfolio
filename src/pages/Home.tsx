@@ -10,9 +10,6 @@ export default function Home() {
       <p className={styles.subtitle}>
         Full Stack Developer · UC Santa Cruz CS
       </p>
-      <p className={styles.bio}>
-        I build web and mobile apps and enjoy 3D (Three.js), backend work, and side projects—documentaries to short films.
-      </p>
       <div className={styles.actions}>
         <Link to="/about" className={styles.primary}>
           About me
