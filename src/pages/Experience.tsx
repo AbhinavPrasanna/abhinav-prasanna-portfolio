@@ -18,22 +18,30 @@ export default function Experience() {
       </p>
       <ul className={styles.positions}>
         <li className={styles.position}>
-          <span className={styles.positionRole}>Site Reliability Engineer</span>
-          <span className={styles.positionCompany}>Centene Corporation</span>
-          <span className={styles.positionMeta}>Jan 2025 – Jan 2026 · Remote</span>
-          <p className={styles.positionDesc}>Lead cross-LOB collaboration to troubleshoot enterprise applications. Debug Spring Boot microservices, optimize SQL in Oracle, fix Python automation scripts, and resolve document processing issues.</p>
-        </li>
-        <li className={styles.position}>
+          <h2 className={styles.employerHeading}>Cognizant</h2>
           <span className={styles.positionRole}>Full Stack Engineer</span>
-          <span className={styles.positionCompany}>Cognizant</span>
           <span className={styles.positionMeta}>Aug 2023 – Feb 2026 · Pleasanton, CA</span>
           <p className={styles.positionDesc}>Built Indie Movie Platform with React and ASP.NET; AWS Cognito, S3, Elastic Beanstalk, RDS, CloudFront, CodePipeline; unit and integration tests in React and C#.</p>
-        </li>
-        <li className={styles.position}>
-          <span className={styles.positionRole}>Site Reliability Engineer</span>
-          <span className={styles.positionCompany}>Kaiser Permanente</span>
-          <span className={styles.positionMeta}>Jun 2024 – Jan 2025 · Remote</span>
-          <p className={styles.positionDesc}>Node.js APIs with AI-assisted development; unit and integration tests; deployment coordination; Splunk for logs and production troubleshooting; security-focused versioning.</p>
+          <ul className={styles.engagements} aria-label="Client engagements through Cognizant">
+            <li className={styles.engagement}>
+              <h3 className={styles.engagementHeading}>
+                Centene Corporation
+                <span className={styles.contractNote}>Contracted by Cognizant</span>
+              </h3>
+              <span className={styles.positionRole}>Site Reliability Engineer</span>
+              <span className={styles.positionMeta}>Jan 2025 – Jan 2026 · Remote</span>
+              <p className={styles.positionDesc}>Lead cross-LOB collaboration to troubleshoot enterprise applications. Debug Spring Boot microservices, optimize SQL in Oracle, fix Python automation scripts, and resolve document processing issues.</p>
+            </li>
+            <li className={styles.engagement}>
+              <h3 className={styles.engagementHeading}>
+                Kaiser Permanente
+                <span className={styles.contractNote}>Contracted by Cognizant</span>
+              </h3>
+              <span className={styles.positionRole}>Site Reliability Engineer</span>
+              <span className={styles.positionMeta}>Jun 2024 – Jan 2025 · Remote</span>
+              <p className={styles.positionDesc}>Node.js APIs with AI-assisted development; unit and integration tests; deployment coordination; Splunk for logs and production troubleshooting; security-focused versioning.</p>
+            </li>
+          </ul>
         </li>
         <li className={styles.position}>
           <span className={styles.positionRole}>Digital Engineer Intern</span>

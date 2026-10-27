@@ -84,3 +84,36 @@
   margin: 0.6rem 0 0;
   color: var(--text-muted);
 }
+
+.employerHeading {
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+  font-size: 1.3rem;
+}
+
+.engagements {
+  list-style: none;
+  padding: 0 0 0 1.25rem;
+  margin: 1.5rem 0 0;
+  border-left: 2px solid var(--border);
+}
+
+.engagement + .engagement {
+  margin-top: 1.5rem;
+}
+
+.engagementHeading {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.contractNote {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
