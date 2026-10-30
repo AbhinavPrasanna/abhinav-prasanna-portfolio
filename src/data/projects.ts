@@ -37,13 +37,13 @@ export const mainProjects: Project[] = [
     slug: 'bayline-sports',
     title: 'Bayline Sports',
     tagline: 'Bay Area sports dashboard · Full-stack product delivery',
-    description: 'A mobile-friendly home for Warriors, 49ers and Valkyries schedules, scores, statistics, official highlights and injury reports, with spoiler protection and an AWS deployment.',
+    description: 'A mobile-friendly home for Warriors, 49ers and Valkyries schedules, scores, statistics, highlights, injury reports and event ticket links, with spoiler protection and an AWS deployment.',
     longDescription: `I designed and shipped Bayline Sports to make following Bay Area teams easier across the NBA, NFL and WNBA. Fans can find the next game, browse a combined schedule and explore game details, with team preferences and spoiler protection saved on their device.\n\nI led product direction and full-stack delivery, from validating sports-data coverage to building the interface, independent ingestion worker, database and production recovery workflow. Developed October 20–23, 2026, in collaboration with OpenAI Codex.`,
     tech: ['Next.js', 'React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker', 'AWS Lightsail'],
     previewImage: {
       src: '/case-studies/bayline-sports/images/hero-desktop-2026-10-26.png',
       alt: 'Bayline Sports live homepage with player artwork, team records, upcoming games and the scoreboard.',
-      caption: 'Live homepage captured October 26, 2026. Feature screenshots below are development captures from October 21–23, 2026.',
+      caption: 'Live homepage captured October 26, 2026. Additional screenshots are dated in their captions.',
     },
     links: [
       { label: 'Live application', url: 'https://baylinescore.com/' },
@@ -65,6 +65,20 @@ export const mainProjects: Project[] = [
         },
       },
       {
+        id: 'game-tickets',
+        title: 'Tickets for upcoming games',
+        paragraphs: [
+          'Fans can access tickets directly from an upcoming game card or its game-details panel. “View tickets on Ticketmaster” opens the specific game’s event page in a new tab. The details panel shows the venue and when the link was verified, keeping ticket access alongside the matchup and viewing options.',
+          'Ticket availability, prices and checkout are handled on Ticketmaster. Bayline displays reviewed event links for future scheduled games with a matching, fresh entry; it does not synchronize ticket prices or inventory, and automatic event discovery is not active.',
+          'The worker imports a bundled, reviewed ticket catalog at release and every ten minutes. Entries match the teams and exact game start time, are subject to a 30-day review window and are suppressed when stale. This keeps each ticket link tied to the intended event while making ongoing catalog maintenance explicit.',
+        ],
+        image: {
+          src: '/case-studies/bayline-sports/images/ticketmaster-game-details-2026-10-30.jpg',
+          alt: 'Bayline game details for Lakers at Warriors showing a Tickets panel, View tickets on Ticketmaster link, Chase Center venue and October 30 verification date.',
+          caption: 'Live game-details ticket access for Lakers at Warriors at Chase Center, captured October 30, 2026. Availability and pricing are shown on Ticketmaster.',
+        },
+      },
+      {
         title: 'Official highlights and current injury reports',
         paragraphs: [
           'An independent worker discovers highlights through official NBA, NFL and WNBA YouTube upload playlists. It validates metadata and matches teams and game timing, with reviewed entries taking precedence. Click-to-load playback and external links handle embedding restrictions; missing or ambiguous matches retain an official-source fallback.',
@@ -80,16 +94,18 @@ export const mainProjects: Project[] = [
         id: 'production-architecture',
         title: 'Production architecture',
         diagram: {
-          src: '/case-studies/bayline-sports/images/bayline-architecture.svg',
-          alt: 'Bayline Sports architecture: Route 53 DNS connects fans to Caddy HTTPS and Next.js on AWS Lightsail. An independent Node.js worker fetches sports and YouTube data into private PostgreSQL. Separate monitoring, backups and a CodeBuild-to-ECR release path support operations.',
-          caption: 'Production architecture for the October 2026 MVP: request flow, data ingestion, recovery and container releases.',
+          src: '/case-studies/bayline-sports/images/bayline-architecture-2026-10-30.png',
+          alt: 'Bayline production architecture showing browser and Ticketmaster event links, Caddy and Next.js on Lightsail, private PostgreSQL, an independent Node.js worker, Warriors broadcast polling, a reviewed ticket catalog, external data sources, monitoring, backups and container releases.',
+          caption: 'Updated production architecture, October 30, 2026: cached scores, reviewed ticket links, Warriors broadcast listings, recovery and container releases.',
         },
         paragraphs: [
           'Route 53 resolves baylinescore.com to the AWS Lightsail host, where Caddy terminates HTTPS and routes requests to Next.js. Docker Compose runs the web application, ingestion worker and PostgreSQL as separate services. The web application serves the React interface and read-only APIs from stored snapshots; the database has no public port.',
           'A separate Node.js worker fetches schedules, scores, statistics and injury reports from BALLDONTLIE, and discovers official highlights through the YouTube API. It validates and normalizes responses before writing PostgreSQL snapshots. Sports and YouTube credentials remain worker-only, so browser traffic does not consume provider quota and web restarts do not reset the ingestion schedule.',
-          'Visible, online browsers refresh cached snapshots every 15 seconds and refetch on reconnect or focus. Upstream sports checks target roughly one minute and injury checks roughly ten minutes, subject to provider limits, pagination and backoff. The release uses snapshot polling; it does not claim second-level score latency or an event stream.',
-          'Zod validates provider payloads, and eight SQL migrations organize normalized games, records, media, statistics and player status. Composite league/provider identities prevent ID collisions. PostgreSQL advisory locking, persistent request throttling, transactional upserts and retries keep ingestion controlled. Failed or partial fetches preserve the last successful snapshot.',
-          'Operations run outside the application process. EventBridge schedules a Lambda readiness check, with CloudWatch and SNS reporting failure and recovery. Host jobs send verified backups to private off-server storage every six hours, with 35-day retention and isolated restore checks. For releases, an operator prepares GitHub source, CodeBuild validates and builds containers, ECR stores digest-pinned images, and Lightsail pulls them for deployment and verification. AWS budget alerts track actual and forecast spending without enforcing a spending cutoff.',
+          'Visible, online browsers refresh cached snapshots every 15 seconds and refetch on reconnect or focus. Upstream sports checks target roughly one minute and injury checks roughly ten minutes, subject to provider limits, pagination and backoff. These browser and ingestion intervals are independent; the app uses snapshot polling rather than an event stream.',
+          'The Warriors broadcast task polls the official NBA schedule every 15 minutes, matching the exact matchup and start time. It uses national and Warriors television listings rather than opponent-only channels, caches listings with a 24-hour limit and provides a safe fallback when a current match is unavailable.',
+          'Ticketmaster is a reviewed source and an external destination for fans. Reviewed event URLs and venues are shipped in a bundled ticket catalog, imported at release and every ten minutes, and stored in game_media.payload as JSONB. Team and exact-start matching, a 30-day review window and stale-link suppression limit display to future scheduled games with a fresh match. Clicking a ticket link goes from the browser to that Ticketmaster event; there is no automated discovery or price/inventory synchronization.',
+          'Zod validates provider payloads, and ordered SQL migrations organize normalized games, records, media, statistics and player status. Composite league/provider identities prevent ID collisions. PostgreSQL advisory locking, persistent request throttling, transactional upserts and retries keep ingestion controlled. Failed or partial fetches preserve the last successful snapshot.',
+          'Operations run outside the application process. EventBridge schedules a Lambda readiness check, with CloudWatch and SNS reporting failure and recovery. Host jobs send verified backups, including ticket metadata, to private off-server storage every six hours, with 35-day retention and isolated restore checks. For releases, an operator archives a Git commit, CodeBuild validates and builds containers, ECR stores digest-pinned images, and Lightsail pulls the images, imports the catalog and verifies the deployment. AWS budget alerts track actual and forecast spending without enforcing a spending cutoff.',
         ],
       },
       {
